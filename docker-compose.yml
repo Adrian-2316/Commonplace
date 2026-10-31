@@ -1,0 +1,29 @@
+# docker compose up --build      then open http://localhost:3000
+# Needs a .env next to this file with the values from .env.example.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: commonplace
+      POSTGRES_DB: commonplace
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U commonplace"]
+      interval: 3s
+      retries: 30
+
+  app:
+    image: commonplace
+    build: .
+    environment:
+      DATABASE_URL: postgres://commonplace:${POSTGRES_PASSWORD}@postgres:5432/commonplace
+      APP_ORIGIN: ${APP_ORIGIN:-http://localhost:3000}
+      SEED_DEMO: ${SEED_DEMO:-false}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-}
+    ports: ["127.0.0.1:3000:3000"]
+    depends_on:
+      postgres: { condition: service_healthy }
+
+volumes:
+  pgdata:

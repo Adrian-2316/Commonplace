@@ -1,0 +1,37 @@
+{
+  "name": "commonplace-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@hocuspocus/provider": "4.7.1",
+    "@tiptap/core": "3.31.4",
+    "@tiptap/extension-collaboration": "3.31.4",
+    "@tiptap/extension-collaboration-caret": "3.31.4",
+    "@tiptap/extension-document": "3.31.4",
+    "@tiptap/extension-highlight": "3.31.4",
+    "@tiptap/extension-list": "3.31.4",
+    "@tiptap/extensions": "3.31.4",
+    "@tiptap/pm": "3.31.4",
+    "@tiptap/react": "3.31.4",
+    "@tiptap/starter-kit": "3.31.4",
+    "@tiptap/y-tiptap": "3.0.10",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "y-indexeddb": "9.0.12",
+    "y-protocols": "1.0.7",
+    "yjs": "13.6.27"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.12",
+    "@types/react-dom": "19.1.9",
+    "@vitejs/plugin-react": "5.0.2",
+    "typescript": "5.9.2",
+    "vite": "7.3.7"
+  }
+}
